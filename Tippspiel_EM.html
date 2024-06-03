@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tippspiel - Fußball Europameisterschaft</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        .admin-view {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tippspiel - Fußball Europameisterschaft</h1>
+    
+    <form id="tippspiel-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+
+        <label for="spiel1">Spiel 1 (Türkei vs. Italien):</label>
+        <select id="spiel1" name="spiel1" required>
+            <option value="Sieg Türkei">Sieg Türkei</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Italien">Sieg Italien</option>
+        </select>
+        <br><br>
+
+        <label for="spiel2">Spiel 2 (Wales vs. Schweiz):</label>
+        <select id="spiel2" name="spiel2" required>
+            <option value="Sieg Wales">Sieg Wales</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Schweiz">Sieg Schweiz</option>
+        </select>
+        <br><br>
+
+        <label for="spiel3">Spiel 3 (Dänemark vs. Finnland):</label>
+        <select id="spiel3" name="spiel3" required>
+            <option value="Sieg Dänemark">Sieg Dänemark</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Finnland">Sieg Finnland</option>
+        </select>
+        <br><br>
+
+        <label for="spiel4">Spiel 4 (Belgien vs. Russland):</label>
+        <select id="spiel4" name="spiel4" required>
+            <option value="Sieg Belgien">Sieg Belgien</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Russland">Sieg Russland</option>
+        </select>
+        <br><br>
+
+        <label for="spiel5">Spiel 5 (England vs. Kroatien):</label>
+        <select id="spiel5" name="spiel5" required>
+            <option value="Sieg England">Sieg England</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Kroatien">Sieg Kroatien</option>
+        </select>
+        <br><br>
+
+        <label for="spiel6">Spiel 6 (Österreich vs. Nordmazedonien):</label>
+        <select id="spiel6" name="spiel6" required>
+            <option value="Sieg Österreich">Sieg Österreich</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Nordmazedonien">Sieg Nordmazedonien</option>
+        </select>
+        <br><br>
+
+        <label for="spiel7">Spiel 7 (Niederlande vs. Ukraine):</label>
+        <select id="spiel7" name="spiel7" required>
+            <option value="Sieg Niederlande">Sieg Niederlande</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Ukraine">Sieg Ukraine</option>
+        </select>
+        <br><br>
+
+        <label for="spiel8">Spiel 8 (Schottland vs. Tschechien):</label>
+        <select id="spiel8" name="spiel8" required>
+            <option value="Sieg Schottland">Sieg Schottland</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Tschechien">Sieg Tschechien</option>
+        </select>
+        <br><br>
+
+        <label for="spiel9">Spiel 9 (Polen vs. Slowakei):</label>
+        <select id="spiel9" name="spiel9" required>
+            <option value="Sieg Polen">Sieg Polen</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Slowakei">Sieg Slowakei</option>
+        </select>
+        <br><br>
+
+        <label for="spiel10">Spiel 10 (Spanien vs. Schweden):</label>
+        <select id="spiel10" name="spiel10" required>
+            <option value="Sieg Spanien">Sieg Spanien</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Schweden">Sieg Schweden</option>
+        </select>
+        <br><br>
+
+        <label for="spiel11">Spiel 11 (Ungarn vs. Portugal):</label>
+        <select id="spiel11" name="spiel11" required>
+            <option value="Sieg Ungarn">Sieg Ungarn</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Portugal">Sieg Portugal</option>
+        </select>
+        <br><br>
+
+        <label for="spiel12">Spiel 12 (Frankreich vs. Deutschland):</label>
+        <select id="spiel12" name="spiel12" required>
+            <option value="Sieg Frankreich">Sieg Frankreich</option>
+            <option value="Unentschieden">Unentschieden</option>
+            <option value="Sieg Deutschland">Sieg Deutschland</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Tipp abgeben</button>
+    </form>
+
+    <div class="admin-view" id="admin-view">
+        <h2>Alle Tipps</h2>
+        <ul id="tipps-list"></ul>
+    </div>
+
+    <script>
+        document.getElementById('tippspiel-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const spiel1 = document.getElementById('spiel1').value;
+            const spiel2 = document.getElementById('spiel2').value;
+            const spiel3 = document.getElementById('spiel3').value;
+            const spiel4 = document.getElementById('spiel4').value;
+            const spiel5 = document.getElementById('spiel5').value;
+            const spiel6 = document.getElementById('spiel6').value;
+            const spiel7 = document.getElementById('spiel7').value;
+            const spiel8 = document.getElementById('spiel8').value;
+            const spiel9 = document.getElementById('spiel9').value;
+            const spiel10 = document.getElementById('spiel10').value;
+            const spiel11 = document.getElementById('spiel11').value;
+            const spiel12 = document.getElementById('spiel12').value;
+
+            const tipps = JSON.parse(localStorage.getItem('tipps') || '[]');
+            tipps.push({ name, spiel1, spiel2, spiel3, spiel4, spiel5, spiel6, spiel7, spiel8, spiel9, spiel10, spiel11, spiel12 });
+            localStorage.setItem('tipps', JSON.stringify(tipps));
+
+            document.getElementById('tippspiel-form').reset();
+            alert('Dein Tipp wurde erfolgreich abgegeben!');
+        });
+
+        function showAdminView() {
+            const tipps = JSON.parse(localStorage.getItem('tipps') || '[]');
+            const tippsList = document.getElementById('tipps-list');
+            tippsList.innerHTML = '';
+            tipps.forEach(tipp => {
+                const li = document.createElement('li');
+                li.textContent = `Name: ${tipp.name}, Spiel 1: ${tipp.spiel1}, Spiel 2: ${tipp.spiel2}, Spiel 3: ${tipp.spiel3}, Spiel 4: ${tipp.spiel4}, Spiel 5: ${tipp.spiel5}, Spiel 6: ${tipp.spiel6}, Spiel 7: ${tipp.spiel7}, Spiel 8: ${tipp.spiel8}, Spiel 9: ${tipp.spiel9}, Spiel 10: ${tipp.spiel10}, Spiel 11: ${tipp.spiel11}, Spiel 12: ${tipp.spiel12}`;
+                tippsList.appendChild(li);
+            });
+            document.getElementById('admin-view').style.display = 'block';
+        }
+
+        // Nur zu Demonstrationszwecken: Aufruf der Admin-Ansicht über URL-Parameter (z.B. ?admin=true)
+        if (new URLSearchParams(window.location.search).get('admin') === 'true') {
+            showAdminView();
+        }
+    </script>
+
+</body>
+</html>
